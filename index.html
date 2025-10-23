@@ -1,317 +1,381 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ukemeobong Eyo Okon | Portfolio</title>
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DelightBite Catering — Delicious Made Simple</title>
+  <meta name="description" content="DelightBite Catering — bespoke menus, elegant events, and home-style comfort. Book catering for weddings, corporate events and private parties." />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+    /* ====== Base ====== */
+    :root{
+      --accent:#d97706; /* warm gold */
+      --dark:#0f172a;
+      --muted:#64748b;
+      --bg:#fafaf9;
+      --card:#ffffff;
+      --radius:12px;
+      --max-width:1100px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* ====== Layout ====== */
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px}
+    header{background:linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));backdrop-filter:blur(4px);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(15,23,42,0.05)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#f97316);display:flex;align-items:center;justify-content:center;color:white;font-weight:700; box-shadow:0 6px 18px rgba(217,119,6,0.18)}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav button{background:transparent;border:0;padding:8px 10px;border-radius:8px;cursor:pointer}
+    nav button:hover{background:rgba(15,23,42,0.04)}
+    .cta{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;font-weight:600}
+
+    /* ====== Hero ====== */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:64px 0}
+    .hero-left h1{font-size:34px;margin:0 0 12px;line-height:1.05}
+    .hero-left p{color:var(--muted);margin:0 0 18px}
+    .features{display:flex;gap:12px;flex-wrap:wrap}
+    .feature{background:var(--card);padding:10px 12px;border-radius:10px;box-shadow:0 6px 18px rgba(15,23,42,0.04);display:flex;gap:10px;align-items:center}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.85));padding:20px;border-radius:16px;box-shadow:0 12px 30px rgba(15,23,42,0.06)}
+
+    /* ====== Sections ====== */
+    section{padding:56px 0}
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+    .section-title h2{margin:0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.04)}
+
+    /* ====== Menu list ====== */
+    .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .menu-item{display:flex;gap:12px;align-items:center}
+    .menu-item img{width:84px;height:64px;border-radius:8px;object-fit:cover}
+    .price{color:var(--accent);font-weight:700}
+
+    /* ====== Gallery ====== */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+
+    /* ====== Testimonials ====== */
+    .testi{display:flex;gap:14px;align-items:flex-start}
+    .avatar{width:56px;height:56px;border-radius:999px;background:#ffe7c9;display:flex;align-items:center;justify-content:center;font-weight:700}
+
+    /* ====== Contact ====== */
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    input, textarea, select{width:100%;padding:10px;border:1px solid rgba(2,6,23,0.08);border-radius:8px}
+    textarea{min-height:140px;resize:vertical}
+    .btn-primary{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:0;cursor:pointer}
+
+    /* ====== Footer ====== */
+    footer{padding:28px 0;color:var(--muted);border-top:1px solid rgba(15,23,42,0.04)}
+
+    /* ====== Responsive ====== */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .menu-grid{grid-template-columns:repeat(2,1fr)}
+      .grid-3{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:600px){
+      nav ul{display:none}
+      .wrap{padding:18px}
+      .hero-left h1{font-size:26px}
+      .form-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
     }
 
-    body {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 4%;
-      background: rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    header h1 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #38bdf8;
-      letter-spacing: 1px;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 1.5rem;
-    }
-
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: #38bdf8;
-    }
-
-    .hero {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 4rem 2rem;
-      gap: 2rem;
-    }
-
-    .hero img {
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #38bdf8;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .hero-content {
-      max-width: 600px;
-    }
-
-    .hero-content h2 {
-      font-size: 2rem;
-      color: #38bdf8;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-content p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #e2e8f0;
-    }
-
-    .btn {
-      margin-top: 1.5rem;
-      background: #38bdf8;
-      color: #0f172a;
-      padding: 0.8rem 1.5rem;
-      border-radius: 25px;
-      border: none;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      background: #0ea5e9;
-      transform: translateY(-3px);
-    }
-
-    section {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    section h2 {
-      color: #38bdf8;
-      margin-bottom: 2rem;
-      font-size: 1.8rem;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-
-    .project-card {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 1.5rem;
-      border-radius: 15px;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-10px);
-      background: rgba(56, 189, 248, 0.1);
-    }
-
-    .project-card h3 {
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-
-    .project-card p {
-      color: #cbd5e1;
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .project-card a {
-      color: #38bdf8;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    footer {
-      background: rgba(0, 0, 0, 0.3);
-      text-align: center;
-      padding: 2rem 0;
-      margin-top: 3rem;
-    }
-
-    .socials {
-      margin-bottom: 1rem;
-    }
-
-    .socials i {
-      color: #38bdf8;
-      margin: 0 10px;
-      font-size: 1.4rem;
-      transition: transform 0.3s ease;
-    }
-
-    .socials i:hover {
-      transform: scale(1.2);
-      color: #0ea5e9;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.3rem;
-      }
-
-      nav ul {
-        flex-direction: column;
-        background: rgba(0, 0, 0, 0.8);
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 200px;
-        display: none;
-      }
-
-      nav ul.show {
-        display: flex;
-      }
-
-      nav ul li {
-        margin: 1rem 0;
-        text-align: center;
-      }
-
-      .menu-toggle {
-        display: block;
-        cursor: pointer;
-      }
-
-      .hero {
-        flex-direction: column;
-      }
-
-      .hero-content h2 {
-        font-size: 1.6rem;
-      }
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1.5rem;
-      color: #38bdf8;
-    }
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .badge{background:rgba(15,23,42,0.04);padding:6px 8px;border-radius:8px;font-size:13px}
   </style>
 </head>
 <body>
-
   <header>
-    <h1>Ukemeobong Eyo Okon</h1>
-    <i class="fa fa-bars menu-toggle"></i>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo">DB</div>
+        <div>
+          <div style="font-weight:700">DelightBite</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Catering & Events</div>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><button data-link="#home">Home</button></li>
+          <li><button data-link="#about">About</button></li>
+          <li><button data-link="#menu">Menu</button></li>
+          <li><button data-link="#gallery">Gallery</button></li>
+          <li><button data-link="#contact">Contact</button></li>
+        </ul>
+      </nav>
+
+      <div style="display:flex;gap:12px;align-items:center">
+        <button class="badge" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Now</button>
+        <button class="cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+      </div>
+    </div>
   </header>
 
-  <section class="hero" id="home">
-    <img src="WhatsApp Image 2025-09-13 at 19.28.59_ea061107.jpg" alt="Ukemeobong Eyo Okon">
-    <div class="hero-content">
-      <h2>Frontend Developer</h2>
-      <p>
-        Hi, I'm <b>Ukemeobong Eyo Okon</b> — a passionate Frontend Developer 
-        dedicated to building responsive, interactive, and elegant web experiences. 
-        Creativity, functionality, and user experience are my guiding principles.
-      </p>
-      <button class="btn">Explore My Work</button>
-    </div>
-  </section>
+  <main class="wrap" id="home">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Delicious catering for every celebration</h1>
+        <p class="muted">From intimate dinners to large weddings, DelightBite crafts menus that taste like home and look like an event. Fresh ingredients, thoughtful presentation, unforgettable flavors.</p>
+        <div style="display:flex;gap:12px;margin-top:18px">
+          <button class="cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Quote</button>
+          <button class="badge" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">View Menu</button>
+        </div>
 
-  <section id="projects">
-    <h2>My Projects</h2>
-    <div class="projects">
-      <div class="project-card">
-        <h3>Calculator App</h3>
-        <p>A modern calculator built with HTML, CSS, and JavaScript — featuring dark mode and smooth animation.</p>
-        <a href="calculator project/index.html">View Project</a>
+        <div style="margin-top:24px" class="features">
+          <div class="feature"><strong>Custom Menus</strong><div style="color:var(--muted);font-size:13px">Food crafted to your taste</div></div>
+          <div class="feature"><strong>Event Setup</strong><div style="color:var(--muted);font-size:13px">Tables, serving & presentation</div></div>
+          <div class="feature"><strong>Fresh Ingredients</strong><div style="color:var(--muted);font-size:13px">Daily-sourced produce</div></div>
+        </div>
       </div>
-      <div class="project-card">
-        <h3>Agric Project</h3>
-        <p>An agricultural web app connecting farmers and buyers, promoting transparency in product exchange.</p>
-        <a href="Agric project/index.html">View Project</a>
+
+      <aside class="hero-card">
+        <h3 style="margin:0 0 8px">Our Special Today</h3>
+        <p class="muted" style="margin:0 0 12px">Jollof Rice with grilled herb chicken — perfect for gatherings of 20+</p>
+        <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-weight:700">From ₦2,800 / plate</div>
+            <div style="font-size:13px;color:var(--muted)">Custom packages available</div>
+          </div>
+          <div>
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="section-title">
+        <h2>About DelightBite</h2>
       </div>
-      <div class="project-card">
-        <h3>Shopping Project</h3>
-        <p>A shopping interface showcasing responsive layouts and dynamic product filtering.</p>
-        <a href="website/index.html">View Project</a>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Our Story</h3>
+          <p class="muted">DelightBite started in a small kitchen with a big dream: to make every event feel like home. We specialise in Nigerian flavours infused with contemporary presentation.</p>
+        </div>
+        <div class="card">
+          <h3>What We Offer</h3>
+          <ul class="muted">
+            <li>Wedding catering & tasting</li>
+            <li>Corporate lunches & events</li>
+            <li>Private parties & chef services</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Why Choose Us</h3>
+          <p class="muted">Custom menus, professional staff, and careful event coordination so you can enjoy the moment, not manage it.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p style="max-width:700px; margin:auto; line-height:1.8; color:#cbd5e1;">
-      I'm a creative, purpose-driven frontend engineer passionate about solving problems through code.
-      I enjoy turning ideas into functional digital experiences while continuously improving my skills.
-      I believe consistency and dedication open doors to excellence.
-    </p>
-  </section>
+    <section id="menu">
+      <div class="section-title">
+        <h2>Menu Highlights</h2>
+      </div>
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Let's connect! You can find me on these platforms:</p>
-    <div class="socials">
-      <a href="https://www.facebook.com/ukemeobong.okon.73/"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.linkedin.com/in/ukemeobong-okon-7a27a0252?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
-      <a href=" https://ukhaey.github.io/My--portfolio--site/"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-    </div>
-    <p>Made with 💙 by Ukemeobong Eyo Okon</p>
-  </section>
+      <div class="menu-grid">
+        <div class="card menu-item">
+          <div>
+            <div style="font-weight:700">Jollof Rice & Chicken</div>
+            <div class="muted" style="font-size:13px">Signature party plate</div>
+            <div class="price">₦2,800</div>
+          </div>
+        </div>
 
-  <footer>
-    <p>&copy; 2025 Ukemeobong Eyo Okon. All Rights Reserved.</p>
-  </footer>
+        <div class="card menu-item">
+          <div>
+            <div style="font-weight:700">Pounded Yam & Egusi</div>
+            <div class="muted" style="font-size:13px">Comfort classics</div>
+            <div class="price">₦3,200</div>
+          </div>
+        </div>
+
+        <div class="card menu-item">
+          
+          <div>
+            <div style="font-weight:700">Seasonal Salad</div>
+            <div class="muted" style="font-size:13px">Fresh & zesty</div>
+            <div class="price">₦1,200</div>
+          </div>
+        </div>
+
+        <div class="card menu-item">
+        
+          <div>
+            <div style="font-weight:700">Grilled Suya Skewers</div>
+            <div class="muted" style="font-size:13px">Spicy & smoky</div>
+            <div class="price">₦1,000</div>
+          </div>
+        </div>
+
+        <div class="card menu-item">
+          <div>
+            <div style="font-weight:700">Small Chops Platter</div>
+            <div class="muted" style="font-size:13px">Perfect for cocktails</div>
+            <div class="price">₦2,000</div>
+          </div>
+        </div>
+
+        <div class="card menu-item">
+          <div>
+            <div style="font-weight:700">Mini Dessert Selection</div>
+            <div class="muted" style="font-size:13px">Sweet bowls & pastries</div>
+            <div class="price">₦900</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="section-title">
+        <h2>Gallery</h2>
+      </div>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="gallery1">
+        <img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="gallery2">
+        <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="gallery3">
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="section-title">
+        <h2>What clients say</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+        <div class="card testi">
+          <div class="avatar">AA</div>
+          <div>
+            <div style="font-weight:700">Amaka A.</div>
+            <div class="muted" style="font-size:13px">"DelightBite catered my wedding — the food, presentation, and the team were exceptional. Guests are still talking about the jollof!"</div>
+          </div>
+        </div>
+
+        <div class="card testi">
+          <div class="avatar">BK</div>
+          <div>
+            <div style="font-weight:700">Bala K.</div>
+            <div class="muted" style="font-size:13px">"Professional, timely, and delicious. Their corporate lunch package is a winner."</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title"><h2>Book DelightBite</h2></div>
+      <div style="display:grid;grid-template-columns:1fr 380px;gap:18px">
+        <div class="card">
+          <form id="contact-form">
+            <div class="form-grid">
+              <input type="text" id="name" placeholder="Full name" required />
+              <input type="email" id="email" placeholder="Email address" required />
+              <input type="text" id="phone" placeholder="Phone number" required />
+              <select id="service">
+                <option value="wedding">Wedding</option>
+                <option value="corporate">Corporate Event</option>
+                <option value="private">Private Party</option>
+                <option value="tasting">Menu Tasting</option>
+              </select>
+            </div>
+            <div style="margin-top:12px">
+              <textarea id="details" placeholder="Event details (date, guest count, location)"></textarea>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+              <button type="submit" class="btn-primary">Send Booking Request</button>
+              <div id="form-msg" class="muted" style="font-size:13px"></div>
+            </div>
+          </form>
+        </div>
+
+        <aside class="card">
+          <h3>Contact</h3>
+          <p class="muted" style="margin-top:6px">Call or WhatsApp: <strong>+234 800 000 0000</strong></p>
+          <p class="muted">Follow us on Instagram: <strong>@delightbite</strong></p>
+          <div style="margin-top:12px"><small class="muted">We aim to respond within 24 hours.</small></div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div class="muted">© DelightBite — Catering & Events</div>
+        <div class="muted">Designed with care • Built by UkemeObong</div>
+      </div>
+    </footer>
+  </main>
 
   <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav ul');
-
-    menuToggle.addEventListener('click', () => {
-      nav.classList.toggle('show');
+    // Smooth scroll for nav buttons
+    document.querySelectorAll('button[data-link]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sel = btn.getAttribute('data-link');
+        document.querySelector(sel).scrollIntoView({behavior:'smooth'});
+      });
     });
-  </script>
 
+    // Simple mobile nav fallback: show nav on tap (basic)
+    // Add form handling: validate and save to localStorage (demo)
+    const form = document.getElementById('contact-form');
+    const msgEl = document.getElementById('form-msg');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+      const details = document.getElementById('details').value.trim();
+
+      if(!name || !email || !phone){
+        msgEl.textContent = 'Please fill the required fields.';
+        return;
+      }
+
+      // Basic email pattern
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!emailPattern.test(email)){
+        msgEl.textContent = 'Enter a valid email address.';
+        return;
+      }
+
+      // Save booking as demo in localStorage
+      const bookings = JSON.parse(localStorage.getItem('delightbite_bookings') || '[]');
+      bookings.push({name,email,phone,service,details,created:new Date().toISOString()});
+      localStorage.setItem('delightbite_bookings', JSON.stringify(bookings));
+
+      msgEl.textContent = 'Thanks! Your request was sent (demo). We will contact you soon.';
+      form.reset();
+
+      setTimeout(() => msgEl.textContent = '', 6000);
+    });
+
+    // Optional: lazy load gallery images by swapping src when visible (simple)
+    const galleryImgs = document.querySelectorAll('#gallery img');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const img = entry.target;
+          const src = img.getAttribute('data-src');
+          if(src) img.src = src;
+          io.unobserve(img);
+        }
+      })
+    }, {rootMargin:'50px'});
+
+    galleryImgs.forEach(img => {
+      // use existing src as fallback; leave data-src for remote optimization
+      if(img.dataset.src) io.observe(img);
+    });
+
+    // Small enhancement: scroll to top on load for consistent mobile behavior
+    window.scrollTo(0,0);
+  </script>
 </body>
 </html>
